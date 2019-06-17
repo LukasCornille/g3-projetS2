@@ -1,0 +1,105 @@
+/* IMPORTATION DES POLICES */
+@font-face {
+  font-family: "Qbicle";
+  src: url("../fonts/Qbicle1BRKMK.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Fugaz One";
+  src: url("../fonts/FugazOne-Regular.ttf") format("truetype");
+}
+
+body {
+  height: 100vh;
+  padding-top: 20px;
+  background: linear-gradient(45deg, #e6dada, #274046);
+  display: flex;
+}
+
+h1 {
+  font-family: "Fugaz One", cursive;
+}
+
+hr {
+  border: solid 1px black;
+  width: 100%;
+  color: black;
+  height: 1px;
+
+}
+
+#main-menu a {
+  font-family: "Fugaz One", cursive;
+  font-size: 22px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+}
+
+#main-menu a:hover {
+  color: white;
+  text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+
+/* SOCIAL MEDIA */
+* {
+  box-sizing: unset !important;
+}
+
+#social-media li {
+  list-style: none outside none;
+  display: inline-block;
+}
+
+#social-media ul,
+#social-media li {
+  margin: 0;
+  padding: 5px;
+}
+
+#social-media .fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: all ease 0.5s;
+}
+
+#social-media .fa:hover {
+  transform: scale(1.2, 1.2);
+  transition: all ease 0.5s;
+  opacity: 0.6;
+}
+
+#social-media .fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+#social-media .fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+#social-media .fa-github {
+  background: #24292e;
+  color: white;
+}
+
+#social-media .fa-gitlab {
+  background: #fa8348;
+  color: white;
+}
+
+#social-media .fa-envelope {
+  background: #dd4b39;
+  color: white;
+}
