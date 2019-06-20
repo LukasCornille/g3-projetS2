@@ -4,21 +4,22 @@ var chartSVG; // Maintient une instance de l'image et de ses données
 
 nv.addGraph(function () {
   chart = nv.models.scatterChart()
+    .showLegend(false)
+    .pointShape("circle")
+    .pointRange([50, 50]);
 
-  chart.xAxis.tickFormat(d3.format('.02f'));
-  chart.yAxis.tickFormat(d3.format('.02f'));
-  chart.showLegend(false);
+  chart.xAxis.ticks(0).tickFormat(d3.format('.01f'));
+  chart.yAxis.ticks(0).tickFormat(d3.format('.01f'));
+  chart.tooltip.enabled(false);
   //chart.interactive(false);
-  //chart.showXAxis(false);
-  //chart.showYAxis(false);
 
-  chartSVG = d3.select('#chart svg')
+  chartSVG = d3.select('#correlatedChart svg')
     .datum(generateCorrelatedSample());
 
   chartSVG
     .transition()
     .duration(500)
-    .call(chart);
+    .call(chart)
 
   nv.utils.windowResize(chart.update);
 
@@ -40,7 +41,7 @@ var trueR;
 
 function generateCorrelatedSample() {
   // Calcul de la série de données
-  trueR = 2 * Math.random() - 1;
+  trueR = Math.random();
   var meanVector = [0, 0];
   var covarianceMatrix = [
     [1.0, trueR],
@@ -53,7 +54,7 @@ function generateCorrelatedSample() {
   // Récupération des coordonnées
   var coordinates = [];
   coordinates.push({
-    color: "#009bb9",
+    color: "#8F3433",
     values: []
   });
 
@@ -69,45 +70,58 @@ function generateCorrelatedSample() {
 }
 
 /* Récupération de la réponse utilisateur et calcul du score */
-var lives = 3;
-var score = 0;
+var lives = 3,
+  score = 0;
 
 function checkAnswer() {
-  var guessedR = Number(document.getElementById("guessedR").value).toFixed(2);
-  var roundedR = trueR.toFixed(2);
+  var guessedR = Number(document.getElementById("guessedR").value).toFixed(2) / 100,
+    roundedR = Number(trueR.toFixed(2));
 
-  if (isNaN(guessedR) || Math.abs(guessedR) > 1) {
-    alert("Vous devez spécifier une valeur numérique entre -1 et 1 !")
+  var life_full = document.createElement("img");
+  life_full.setAttribute("src", "assets/life_full.png");
+  life_full.setAttribute("width", "50px");
+  life_full.setAttribute("height", "50px");
+
+  var life_empty = document.createElement("img");
+  life_empty.setAttribute("src", "assets/life_empty.png");
+  life_empty.setAttribute("width", "50px");
+  life_empty.setAttribute("height", "50px");
+
+  if (guessedR === roundedR) {
+    score += 10;
+    document.getElementById("replyText").innterText = "Félicitations !";
+    document.getElementById("score").innerText = score;
+    lives += 1;
+    document.getElementById("life" + lives).src = "assets/life_full.png";
+    lives += 1;
+    document.getElementById("life" + lives).src = "assets/life_full.png";
+  } else if (guessedR <= roundedR + 0.05 && guessedR >= roundedR - 0.05) {
+    score += 5;
+    lives += 1;
+    document.getElementById("life" + lives).src = "assets/life_full.png";
+    document.getElementById("score").innerText = score;
+    document.getElementById("replyText").innerText = "Bravo !";
+  } else if (guessedR <= roundedR + 0.10 && guessedR >= roundedR - 0.10) {
+    score += 1;
+    //document.getElementById("lives").innerText = lives;
+    document.getElementById("score").innerText = score;
+    document.getElementById("replyText").innerText = "Peut mieux faire ;)";
   } else {
-    if (guessedR === roundedR) {
-      score += 10;
-      lives += 2;
-      document.getElementById("replyText").innerText = "Félicitations !";
-      document.getElementById("score").innerText = score;
-      document.getElementById("lives").innerText = lives;
-    } else if (guessedR <= roundedR + 0.05 && guessedR >= roundedR - 0.05) {
-      score += 5;
-      lives += 1;
-      document.getElementById("lives").innerText = lives;
-      document.getElementById("score").innerText = score;
-      document.getElementById("replyText").innerText = "Bravo !";
-    } else if (guessedR <= roundedR + 0.1 && guessedR >= roundedR - 0.1) {
-      score += 1;
-      document.getElementById("lives").innerText = lives;
-      document.getElementById("score").innerText = score;
-      document.getElementById("replyText").innerText = "Peut mieux faire ;)";
-    } else {
-      lives -= 1;
-      document.getElementById("lives").innerText = lives;
-      document.getElementById("replyText").innerText = "Raté ! :(";
-    }
 
-    if (lives === 0) {
-      document.getElementById("lives").innerText = "Game Over"
-    }
-
-    updateGraph()
+    document.getElementById("life" + lives).src = "assets/life_empty.png";
+    lives -= 1;
+    document.getElementById("replyText").innerText = "Raté ! :(";
   }
+
+  if (lives >= 4) {
+    //document.getElementById("lives").innerText = "4"
+  }
+
+  if (lives <= 0) {
+    //
+  }
+
+  updateGraph()
 }
 
 function checkKeyPress(event) {

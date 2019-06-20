@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+  <title>Règles du jeu | GuessR</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p id="main-menu" class="text-right"><a href="menu.html">Menu</a></p>
+        <h1>
+          Règles du jeu
+        </h1>
+        <p>
+          Le but du jeu est simple. Votre objectif est de deviner <a
+            href="https://fr.wikipedia.org/wiki/Corrélation_(statistiques)" target="_blank">la corrélation entre deux
+            variables à l'aide d'un nuage de points</a>. Plus votre hypothèse est proche de la vraie valeur de
+          corrélation,
+          plus vous gagnez de points.
+        </p>
+        <p>
+          Votre estimation doit être comprise entre <strong>-1</strong> et <strong>1</strong>.<br>
+          Une valeur égale à 0 signifie qu'il n'existe aucune corrélation entre les deux séries tandis qu'une valeur
+          égale à -1 ou 1 signifie que la corrélation est parfaite.<br>
+          La valeur est positive dans le cas où l'une des variables est une fonction affine croissante de l'autre
+          variable
+          et négative dans le cas où une variable est une fonction affine décroissante.
+          //ici tableau récapitulatif
+        </p>
+        <p>
+          Vous commencez avec 3 vies.
+        </p>
+        <ul>
+          <li>Devinez exactement la vraie valeur de corrélation et gagnez 2 vies et 10 points.</li>
+          <li>Devinez à moins de 0,05 de la vraie valeur de corrélation : Vous gagnez 1 vie et 5 points.</li>
+          <li>Devinez à moins de 0,10 de la vraie valeur de corrélation : Vous gagnez 1 point.</li>
+          <li>Devinez à plus de 0,10 de la vraie valeur de corrélation : Vous perdez 1 vie.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

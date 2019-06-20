@@ -2,58 +2,53 @@
 <html lang="fr" dir="ltr">
 
 <head>
+  <title>GuessR</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/scatterchart.css">
   <link rel="stylesheet" href="css/nv.d3.css">
+  <link rel="stylesheet" href="css/about.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="js/d3.min.js" charset="utf-8"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
+  <script src="js/d3.min.js"></script>
   <script src="js/nv.d3.min.js"></script>
   <script src="js/multivariate-normal.min.js"></script>
   <script src="js/graph.js"></script>
-
-  <style>
-    body {
-      padding-top: 15px;
-    }
-
-    #chart svg {
-      height: 600px;
-      width: 600px;
-    }
-  </style>
 </head>
 
 <body>
   <div class="container">
     <div class="row">
       <div class="col">
-        Vies : <span id="lives">3</span><br>
-        Score : <span id="score">0</span><br>
-        <span id="replyText"></span>
+        <span><img src="assets/life_full.png" id="life1" height="50px" width="50px"></span>
+        <span><img src="assets/life_full.png" id="life2" height="50px" width="50px"></span>
+        <span><img src="assets/life_full.png" id="life3" height="50px" width="50px"></span>
+        <span><img src="assets/life_empty.png" id="life4" height="50px" width="50px"></span><br>
+        <h3>Score : <span id="score">0</span></h3>
+
       </div>
       <div class="col">
-        <p class="text-right"><a href=menu.html>Menu</a></p>
+        <p id="main-menu" class="text-right"><a href=menu.html>Menu</a></p>
       </div>
     </div>
 
     <div class="row">
-      <div class="col">
-        <div id="chart">
-          <svg class="mx-auto"></svg>
-        </div>
+      <div id="correlatedChart" class="with-3d-shadow with-transitions">
+        <svg></svg>
       </div>
 
       <div class="col">
-
         <div class="col-auto">
-          <div class="input-group mb-3">
+          <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text">oui</span>
+              <span class="input-group-text">0.</span>
             </div>
-            <input type="text" id="guessedR" class="form-control" onkeydown="checkKeyPress()" value="0.">
+            <input type="number" id="guessedR" class="form-control" onkeydown="checkKeyPress()">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" onclick="checkAnswer()">Guess</button>
+              <button class="btn btn-secondary btn-lg " onclick="checkAnswer()">?</button>
             </div>
           </div>
+          <span id="replyText"></span>
         </div>
 
       </div>

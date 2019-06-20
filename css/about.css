@@ -10,13 +10,12 @@
 }
 
 body {
-  height: 100vh;
   padding-top: 20px;
-  background: linear-gradient(45deg, #e6dada, #274046);
-  display: flex;
+  background: linear-gradient(to right, #348f50, #56b4d3);
 }
 
-h1 {
+h1,
+h2 {
   font-family: "Fugaz One", cursive;
 }
 
@@ -28,9 +27,13 @@ hr {
 
 }
 
+p a {
+  color: blue;
+}
+
 #main-menu a {
   font-family: "Fugaz One", cursive;
-  font-size: 22px;
+  font-size: 2em;
   text-transform: uppercase;
   text-decoration: none;
   color: inherit;
