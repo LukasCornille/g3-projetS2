@@ -47,7 +47,12 @@ body {
   text-align: left;
   font-family: 'Qbicle';
   font-size: 150px;
+  cursor: default;
+}
+
+#logo .easter-egg {
   cursor: help;
+  text-decoration: none;
 }
 
 span {
