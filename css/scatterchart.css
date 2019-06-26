@@ -1,3 +1,16 @@
+#examples {
+  text-align: center;
+  font-weight: bold;
+}
+
+#examples svg {
+  margin: 0px;
+  padding: 0px;
+  height: 350px;
+  width: 350px;
+  margin-left: -13px;
+}
+
 #correlatedChart svg {
   margin: 0px;
   padding: 0px;
@@ -5,6 +18,18 @@
   width: 500px;
   margin-left: -13px;
 }
+
+
+@media (max-width: 768px) {
+  #correlatedChart svg {
+    margin: 0px;
+    padding: 0px;
+    height: 400px;
+    width: 400px;
+    margin-left: -13px;
+  }
+}
+
 
 /*
 .nv-group {

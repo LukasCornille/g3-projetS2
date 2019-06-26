@@ -1,10 +1,7 @@
 <?php
         function connect(){
-                $conn = mysql_connect('localhost', 'root', '');  
-                $statcon = mysql_select_db('guessr', $conn);
-                if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                } 
+                $id_con = mysql_connect('localhost', 'root', '');  
+                $stat_con = mysql_select_db('guessr', $id_con);
         }
         connect(); 
         mysql_query("DROP TABLE IF EXISTS classement");
