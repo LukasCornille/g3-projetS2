@@ -39,8 +39,10 @@
     </div>
 
     <div class="row">
-      <div id="correlatedChart" class="with-3d-shadow with-transitions">
-        <svg></svg>
+      <div class="col">
+        <div id="correlatedChart" class="with-3d-shadow with-transitions">
+          <svg></svg>
+        </div>
       </div>
 
       <div class="col">
@@ -52,12 +54,13 @@
             </div>
           </div>
           <div class="col-auto">
-            <button class="btn btn-secondary btn-lg " onclick="checkAnswer()"><i class="fa fa-lightbulb-o"
-                style="font-size: 165%"></i></button>
+            <button class="btn btn-secondary" onclick="checkAnswer()"><i class="fa fa-lightbulb-o"></i></button>
           </div>
         </div>
         <p>
-          <span id="replyText"></span><br>
+          <h5 id="replyText"></h5>
+          <p id="healthRecap"></p>
+          <p id="starRecap"></p>
           Série de bonnes réponses : <span id="streak">0</span><br>
           Erreur moyenne : <span id="meanError">0.00</span>
         </p>
@@ -79,10 +82,7 @@
 
     <div class="row">
       <div class="mx-auto">
-        <p id="result" class="text-center">
-          Bien joué, vous avez fait un score de X points ! Saisissez votre pseudo pour ajouter
-          votre score au classement !
-        </p>
+        <p id="result" class="text-center"></p>
         <form name="userScore" method="post" action="php/score.php">
           <div class="form-row align-items-center">
             <div class="col">

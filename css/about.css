@@ -9,12 +9,6 @@
   src: url("../fonts/FugazOne-Regular.ttf") format("truetype");
 }
 
-@media (max-width: 768px) {
-  body {
-    background: #348f50 !important;
-  }
-}
-
 body {
   padding-top: 20px;
   background: linear-gradient(to right, #348f50, #56b4d3);
@@ -34,7 +28,7 @@ hr {
 }
 
 p a {
-  color: blue;
+  color: #8F3433;
 }
 
 #small-menu span {
@@ -63,7 +57,7 @@ p a {
 
 
 /* SOCIAL MEDIA */
-* {
+#social-media * {
   box-sizing: unset !important;
 }
 
@@ -127,6 +121,14 @@ li .fa-star {
 #score {
   font-size: 40px;
   margin-left: 10px;
+}
+
+p .fa-heart {
+  color: #8F3433;
+}
+
+p .fa-star {
+  color: gold;
 }
 
 span .fa-heart,

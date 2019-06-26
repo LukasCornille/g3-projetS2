@@ -13,22 +13,20 @@
 
 <body>
 <div class="container">
-        <div class="row">
-                <?php 
-                        function connect(){
-                                $idcon = mysql_connect('localhost', 'root', '');  
-                                $statcon = mysql_select_db('guessr', $idcon);
-                        } 
-                        connect(); 
-                        $pseudo = !empty($_POST['pseudo']) ? $_POST['pseudo'] : 'Anonymous';
-                        $score = $_POST['userScore'];
-                        $req ="INSERT INTO stockage (pseudo, score) VALUES('".$pseudo."','".$score."')";
-                        mysql_query($req);
-                        if (mysql_query($req)) {
-                                echo "Merci d'avoir joué !";
-                        }
-                ?>
-        </div>
+        <?php 
+                function connect(){
+                        $idcon = mysql_connect('localhost', 'root', '');  
+                        $statcon = mysql_select_db('guessr', $idcon);
+                } 
+                connect(); 
+                $pseudo = !empty($_POST['pseudo']) ? $_POST['pseudo'] : 'Anonymous';
+                $score = $_POST['userScore'];
+                $req ="INSERT INTO stockage (pseudo, score) VALUES('".$pseudo."','".$score."')";
+                if (mysql_query($req)) {
+                        echo "<h3 class='text-center'>Merci d'avoir joué !</h3>";
+                }
+        ?>
+
         <div class="row">
                 <h1>Classement</h1>
                 <div class="table-responsive">
@@ -64,8 +62,8 @@
         </div>
         <div class="row">
                 <div id="small-menu" class="mx-auto">
-                        <span><a href="game.html">Rejouer</a></span>
-                        <span><a href="menu.html">Menu principal</a></span>
+                        <span><a href="../game.html">Rejouer</a></span>
+                        <span><a href="../menu.html">Menu principal</a></span>
                 </div>
         </div>
 </div>
