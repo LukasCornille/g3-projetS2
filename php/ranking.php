@@ -13,7 +13,7 @@
 
 <body>
     <div class="container">
-        <p id="small-menu" class="text-right"><a href="menu.html">Menu</a></p>
+        <p id="small-menu" class="text-right"><a href="../menu.html">Menu</a></p>
         <h1>Classement</h1>
             <div class="table-responsive">
                 <?php

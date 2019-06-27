@@ -24,8 +24,18 @@
   #correlatedChart svg {
     margin: 0px;
     padding: 0px;
-    height: 400px;
-    width: 400px;
+    height: 350px;
+    width: 350px;
+    margin-left: -13px;
+  }
+}
+
+@media (max-width: 350px) {
+  #correlatedChart svg {
+    margin: 0px;
+    padding: 0px;
+    height: 300px;
+    width: 300px;
     margin-left: -13px;
   }
 }

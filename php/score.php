@@ -13,35 +13,29 @@
 
 <body>
 <div class="container">
-        <?php 
-                function connect(){
-                        $idcon = mysql_connect('localhost', 'root', '');  
-                        $statcon = mysql_select_db('guessr', $idcon);
-                } 
-                connect(); 
-                $pseudo = !empty($_POST['pseudo']) ? $_POST['pseudo'] : 'Anonymous';
-                $score = $_POST['userScore'];
-                $req ="INSERT INTO stockage (pseudo, score) VALUES('".$pseudo."','".$score."')";
-                if (mysql_query($req)) {
-                        echo "<h3 class='text-center'>Merci d'avoir joué !</h3>";
-                }
-        ?>
-
         <div class="row">
                 <h1>Classement</h1>
                 <div class="table-responsive">
                         <?php
-                                connect();
+                                function connect(){
+                                        $idcon = mysql_connect('localhost', 'root', '');  
+                                        $statcon = mysql_select_db('guessr', $idcon);
+                                } 
+                                connect(); 
+                                $pseudo = !empty($_POST['userName']) ? $_POST['userName'] : 'Anonymous';
+                                $score = $_POST['userScore'];
+                                $req ="INSERT INTO stockage (pseudo, score) VALUES('".$pseudo."','".$score."')";
+                                mysql_query($req);
                                 mysql_query("DROP TABLE IF EXISTS classement");
                                 mysql_query("CREATE TABLE classement as
                                 SELECT PSEUDO, SCORE
                                 FROM stockage
                                 ORDER BY SCORE DESC
                                 LIMIT 10;");
-                                $test = mysql_query("SELECT * FROM classement");
+                                $ranks = mysql_query("SELECT * FROM classement");
                                 $i = 1;
                                 echo "<table class='table table-hover'><thead><tr><th scope='col'>#</th><th scope='col'>Pseudo</th><th scope='col'>Score</th></tr></thead>";
-                                while ($data = mysql_fetch_array($test)) {
+                                while ($data = mysql_fetch_array($ranks)) {
                                         if ($i == 1) {
                                         echo "<tr><th scope='row'><i class='fa fa-trophy' style='color:gold;'></i></th>"."<td>".$data[0]."</td><td>".$data[1]."</td></tr>";
                                         }
@@ -60,10 +54,13 @@
                         ?>
                 </div>
         </div>
+        <?php 
+                echo "<h3 class='text-center'>Merci d'avoir joué !</h3>";
+        ?>
         <div class="row">
                 <div id="small-menu" class="mx-auto">
                         <span><a href="../game.html">Rejouer</a></span>
-                        <span><a href="../menu.html">Menu principal</a></span>
+                        <span><a href="../menu.html">Menu</a></span>
                 </div>
         </div>
 </div>
